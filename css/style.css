@@ -1,19 +1,25 @@
-.form-control{
+.container-center{
 	width: 50%;
+	margin: 0 auto !important;
+	float: none !important;
+}
+
+.row.sigup{
+	margin-top:5%;
+}
+
+.form-control{
 }
 
 .btn{
-	width: 50%;
 }
 
 .or{
-	width: 50%;
 }
 
 .hr-or{
 	width: 45%;
-/*	position: relative;
-*/}
+}
 
 .label-or{
 	padding-top: 10px;
