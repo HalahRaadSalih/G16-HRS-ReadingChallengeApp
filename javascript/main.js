@@ -12,7 +12,8 @@ var ref = new Firebase("https://amber-inferno-898.firebaseio.com/");
 			ref.createUser({
 
   			email    : $("#userEmail").val(),
-  			password : $("#userPassword").val()
+  			password : $("#userPassword").val(),
+        
 			   }, function(error, userData) {
 
   			if (error) {
@@ -20,6 +21,11 @@ var ref = new Firebase("https://amber-inferno-898.firebaseio.com/");
   			} 
 
   			else {
+          ref.push({
+            id: userData.uid,
+            firstName: $("#firstName").val(),
+            lastName: $("#lastName").val()});
+
           var successAlert = $('<div class="alert alert-success" role="alert">Successfully created user!</div>');
           $('form').empty();
           $('form').append(successAlert);
