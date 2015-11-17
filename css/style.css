@@ -27,3 +27,8 @@
 	margin: 0 auto !important;
    float: none !important;
 }
+
+.alert.alert-success{
+	top: 20px;
+	transition: top 1s;
+}

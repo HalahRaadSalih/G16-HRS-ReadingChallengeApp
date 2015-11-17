@@ -20,10 +20,9 @@ var ref = new Firebase("https://amber-inferno-898.firebaseio.com/");
   			} 
 
   			else {
-    		  console.log("Successfully created user account with uid:", userData.uid);
-          var successAlert = $('<div class="alert alert-success" role="alert">Success!</div>');
+          var successAlert = $('<div class="alert alert-success" role="alert">Successfully created user!</div>');
+          $('form').empty();
           $('form').append(successAlert);
-          $('#createAccount').remove();
   			}
 			});	
 		}
