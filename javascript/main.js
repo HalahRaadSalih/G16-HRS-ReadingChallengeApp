@@ -1,5 +1,4 @@
-var ref = new Firebase("https://amber-inferno-898.firebaseio.com/");
-
+var ref = new Firebase("https://amber-inferno-898.firebaseio.com/users");
     $("#createAccount").on('click', function(){
       return false;
     });
@@ -21,10 +20,14 @@ var ref = new Firebase("https://amber-inferno-898.firebaseio.com/");
   			} 
 
   			else {
-          ref.push({
-            id: userData.uid,
-            firstName: $("#firstName").val(),
-            lastName: $("#lastName").val()});
+          var userID = userData.uid;
+          var someObj = {};
+          someObj[userID] = {
+                                  firstName: $("#firstName").val(),
+                                  lastName: $("#lastName").val()
+                                  };
+          ref.set(someObj);
+          
 
           var successAlert = $('<div class="alert alert-success" role="alert">Successfully created user!</div>');
           $('form').empty();
