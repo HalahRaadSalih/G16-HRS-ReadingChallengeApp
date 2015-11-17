@@ -1,8 +1,14 @@
 var ref = new Firebase("https://amber-inferno-898.firebaseio.com/");
 
-		$("#createAccount").on('click', createUser);
+    $("#createAccount").on('click', function(){
+      return false;
+    });
+
+    $("#createAccount").on('click', createUser);
+  	
 
 		function createUser(){
+      console.log('inside createUser');
 			ref.createUser({
   			email    : $("#userEmail").val(),
   			password : $("#userPassword").val()
