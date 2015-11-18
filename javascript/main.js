@@ -16,16 +16,17 @@ var ref = new Firebase("https://amber-inferno-898.firebaseio.com/users");
 			   }, function(error, userData) {
 
   			if (error) {
-    		  console.log("Error creating user:", error);
+          console.log("Error creating user:", error);
   			} 
 
   			else {
           var userID = userData.uid;
           var someObj = {};
           someObj[userID] = {
-                                  firstName: $("#firstName").val(),
-                                  lastName: $("#lastName").val()
-                                  };
+                              firstName: $("#firstName").val(),
+                              lastName: $("#lastName").val()
+                            };
+
           ref.set(someObj);
           
 
