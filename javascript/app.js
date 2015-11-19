@@ -1,3 +1,4 @@
+var Book = require("./book");
 
 window.onload = function(){
     googleBooksSearch();
@@ -45,5 +46,20 @@ function googleBooksSearch(){
     }
   });
   
+}
+
+function makeProductLayout (book) {
+  var productContainer = $("<div>").addClass("col-md-3");
+ 
+  var productImage = $("<img>").attr("src",image);
+ 
+  var productDescription = $("<p>");
+  productDescription.html(description);
+ 
+  var productAddButton = $("<a>").addClass("btn btn-info");
+
+  productContainer.append(productImage, productDescription, productLikeButton, productBuyButton);
+
+  return productContainer;
 }
 
