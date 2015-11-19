@@ -32,3 +32,12 @@
 	top: 20px;
 	transition: top 1s;
 }
+
+#bookRow img{
+	width: 265px;
+	height: 400px;
+}
+
+#bookRow p{
+	height: 120px;
+}
