@@ -1,4 +1,3 @@
-var Book = require("./book");
 
 window.onload = function(){
     googleBooksSearch();
@@ -30,6 +29,8 @@ function googleBooksSearch(){
       });
 
       googleBooksAPIRequest.done(function(data){
+        console.log(data.items);
+
         results = data.items;
          $('li').remove();
         results.forEach(function(item){

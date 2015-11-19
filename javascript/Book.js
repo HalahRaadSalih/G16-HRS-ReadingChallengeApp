@@ -4,4 +4,3 @@ var Book = function(title,image,description){
 	this.description = description;
 }
 
-module.exports = Book;
