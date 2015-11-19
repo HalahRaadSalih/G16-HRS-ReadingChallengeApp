@@ -6,7 +6,7 @@ window.onload = function(){
 function googleBooksSearch(){
 
   var userInput, searchUrl, results;
-  var outputArea = $("#main");
+  var outputArea = $("#bookRow");
   var googleBooksAPIRequest;
 
   userInput = $('#searchBooks');
@@ -39,13 +39,16 @@ function googleBooksSearch(){
 
         //for each item, create new book object and push it to results
         data.items.forEach(function(item){
-          outputArea.append("<li>" + item.volumeInfo.title +"</li>");
 
           var volumeInfo = item.volumeInfo;
           var book = makeBook(volumeInfo);
 
-          results.push(book);
+          outputArea.append(makeBookLayout(book));
+
+          // results.push(book);
           });
+
+
 
         });
 
@@ -71,19 +74,20 @@ function makeBook(info){
 
 // this funtion creates the layout for every book
 // untested yet
-function makeProductLayout (book) {
-  var productContainer = $("<div>").addClass("col-md-3");
+function makeBookLayout (book) {
+  var bookContainer = $("<div>").addClass("col-md-3");
  
-  var productImage = $("<img>").attr("src",book.image);
- 
-  var productDescription = $("<p>");
-  productDescription.html(book.description);
- 
-  var productAddButton = $("<a>").addClass("btn btn-info");
-  productAddButton.html("Add book");
+  var bookImage = $("<img>").attr("src",book.image);
+  var bookTitle = $('<h4>').html(book.title);
 
-  productContainer.append(productImage, productDescription,productAddButton);
+  var bookDescription = $("<p>");
+  bookDescription.html(book.description);
+ 
+  var bookAddButton = $("<a>").addClass("btn btn-info");
+  bookAddButton.html("Add book");
 
-  return productContainer;
+  bookContainer.append(bookImage, bookTitle, bookDescription, bookAddButton);
+
+  return bookContainer;
 }
 
