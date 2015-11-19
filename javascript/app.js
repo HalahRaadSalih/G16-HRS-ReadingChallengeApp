@@ -19,7 +19,7 @@ function googleBooksSearch(){
 
     // if the text field is empty, clear the screen
     if( !$(this).val() ) {
-      $('li').remove();
+      $('col-md-3').remove();
     }
 
     //else, query for the user input
@@ -35,7 +35,7 @@ function googleBooksSearch(){
       googleBooksAPIRequest.done(function(data){
         results = [];
         // remove previous item on screen
-        $('li').remove();
+        $('col-md-3').remove();
 
         //for each item, create new book object and push it to results
         data.items.forEach(function(item){
@@ -45,7 +45,6 @@ function googleBooksSearch(){
 
           outputArea.append(makeBookLayout(book));
 
-          // results.push(book);
           });
 
 
@@ -53,10 +52,8 @@ function googleBooksSearch(){
         });
 
       googleBooksAPIRequest.fail(function(error){
-
-        $('li').remove();
+        $('col-md-3').remove();
         console.log(error);
-
         outputArea.append("<li>" + error.responseText +"</li>");
       });
 
@@ -81,7 +78,7 @@ function makeBookLayout (book) {
   var bookTitle = $('<h4>').html(book.title);
 
   var bookDescription = $("<p>");
-  bookDescription.html(book.description);
+  bookDescription.html(book.description.substr(0,200));
  
   var bookAddButton = $("<a>").addClass("btn btn-info");
   bookAddButton.html("Add book");
