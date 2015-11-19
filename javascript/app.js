@@ -29,9 +29,8 @@ function googleBooksSearch(){
       });
 
       googleBooksAPIRequest.done(function(data){
-        // console.log(data.items);
 
-        results = data.items;
+        results = [];
          $('li').remove();
 
         data.items.forEach(function(item){
@@ -51,7 +50,7 @@ function googleBooksSearch(){
 
         $('li').remove();
         console.log(error);
-        
+
         outputArea.append("<li>" + error.responseText +"</li>");
       });
 
@@ -72,14 +71,15 @@ function makeBook(info){
 function makeProductLayout (book) {
   var productContainer = $("<div>").addClass("col-md-3");
  
-  var productImage = $("<img>").attr("src",image);
+  var productImage = $("<img>").attr("src",book.image);
  
   var productDescription = $("<p>");
-  productDescription.html(description);
+  productDescription.html(book.description);
  
   var productAddButton = $("<a>").addClass("btn btn-info");
+  productAddButton.html("Add book");
 
-  productContainer.append(productImage, productDescription, productLikeButton, productBuyButton);
+  productContainer.append(productImage, productDescription,productAddButton);
 
   return productContainer;
 }
