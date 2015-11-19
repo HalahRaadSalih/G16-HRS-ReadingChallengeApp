@@ -12,7 +12,6 @@ function googleBooksSearch(){
   userInput = $('#searchBooks');
 
   userInput.data('oldVal', userInput.val());
-  // setInterval(function() { ObserveInputValue($('#searchBooks').val()); }, 100);
 
   userInput.on('change', function(event){
     event.preventDefault();
@@ -45,18 +44,6 @@ function googleBooksSearch(){
 
     }
   });
-  // userInput.bind('propertychange change input', _.throttle(function(){
-  //   , 800));
-
-  // userInput.bind('propertychange keyup input', function(event){
-
-  //   //if search field is clear, remove li elements from screen
-    
-  //   }
-    
- 
-
-  // });
-
   
 }
+
