@@ -14,11 +14,15 @@ function googleBooksSearch(){
   userInput.data('oldVal', userInput.val());
 
   userInput.on('change', function(event){
+    //on change of text input, prevent default behvior
     event.preventDefault();
+
+    // if the text field is empty, clear the screen
     if( !$(this).val() ) {
       $('li').remove();
     }
 
+    //else, query for the user input
     else{
       searchUrl = "https://www.googleapis.com/books/v1/volumes?q=intitle:" + userInput.val();
 
@@ -29,10 +33,11 @@ function googleBooksSearch(){
       });
 
       googleBooksAPIRequest.done(function(data){
-
         results = [];
-         $('li').remove();
+        // remove previous item on screen
+        $('li').remove();
 
+        //for each item, create new book object and push it to results
         data.items.forEach(function(item){
           outputArea.append("<li>" + item.volumeInfo.title +"</li>");
 
@@ -41,8 +46,6 @@ function googleBooksSearch(){
 
           results.push(book);
           });
-
-        console.log(results);
 
         });
 
