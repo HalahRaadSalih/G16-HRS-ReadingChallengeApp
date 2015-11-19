@@ -29,18 +29,29 @@ function googleBooksSearch(){
       });
 
       googleBooksAPIRequest.done(function(data){
-        console.log(data.items);
+        // console.log(data.items);
 
         results = data.items;
          $('li').remove();
-        results.forEach(function(item){
-        outputArea.append("<li>" + item.volumeInfo.title +"</li>");
+
+        data.items.forEach(function(item){
+          outputArea.append("<li>" + item.volumeInfo.title +"</li>");
+
+          var volumeInfo = item.volumeInfo;
+          var book = makeBook(volumeInfo);
+
+          results.push(book);
+          });
+
+        console.log(results);
+
         });
-      });
 
       googleBooksAPIRequest.fail(function(error){
+
         $('li').remove();
         console.log(error);
+        
         outputArea.append("<li>" + error.responseText +"</li>");
       });
 
@@ -49,6 +60,15 @@ function googleBooksSearch(){
   
 }
 
+// this function responsibilty is to create new book object from the info parameter
+// sent
+function makeBook(info){
+
+   return new Book(info.title, info.imageLinks.thumbnail,info.description);
+}
+
+// this funtion creates the layout for every book
+// untested yet
 function makeProductLayout (book) {
   var productContainer = $("<div>").addClass("col-md-3");
  
