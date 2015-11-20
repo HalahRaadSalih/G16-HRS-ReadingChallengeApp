@@ -9,7 +9,7 @@ window.onload = function(){
 function googleBooksSearch(){
 
   // define variables
-  var userInput, searchUrl, books;
+  var userInput, searchUrl;
 
   // save the books row in a variable
   var outputArea = $("#challengeBookRow");
@@ -21,7 +21,6 @@ function googleBooksSearch(){
 
   //on change of text input, prevent default behvior
   userInput.on('change', function(event){
-     books = [];
 
     event.preventDefault();
     // if the text field is empty, clear the screen
@@ -51,7 +50,6 @@ function googleBooksSearch(){
           var volumeInfo = item.volumeInfo;
           var book = makeBook(volumeInfo);
 
-          books.push(book);
           outputArea.append(makeBookLayout(book));
 
         });
@@ -68,7 +66,6 @@ function googleBooksSearch(){
 
     }
 
-    console.log('3t3774t' + $('.btn-info')[0]);
 
   });
 
@@ -108,6 +105,8 @@ function makeBookLayout (book) {
   var bookAddButton = $("<a>").addClass("btn btn-info");
   bookAddButton.html("Add book");
 
+  //on clicking add book, animate removing the boo with an animation
+  // add the book to the book list
   bookAddButton.on('click', function(event){
     event.preventDefault();
     bookContainer.animate({
@@ -120,7 +119,6 @@ function makeBookLayout (book) {
     function(){
       bookContainer.remove();
       LIST_OF_BOOKS.push(book);
-      console.log(LIST_OF_BOOKS);
     });
 
   });
@@ -145,5 +143,7 @@ function createChallenge(){
    var challenge = new Challenge(challengeName, challengeDescription, challengeDuration);
 
    //add books to this challenge
-   challenge.books = books;
+   LIST_OF_BOOKS.forEach(function(book){
+    challenge.books.push(book);
+   });
 }
