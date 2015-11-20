@@ -33,6 +33,7 @@ var ref = new Firebase("https://amber-inferno-898.firebaseio.com/users");
           var successAlert = $('<div class="alert alert-success" role="alert">Successfully created user!</div>');
           $('form').empty();
           $('form').append(successAlert);
+          window.location.replace("createChallenge.html");
   			}
 			});	
 		}
