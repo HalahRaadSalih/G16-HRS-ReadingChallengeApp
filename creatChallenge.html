@@ -31,41 +31,54 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="container-center">
+			<div class="container-challenge">
 
 				<div class="row sigup">
 
     				<div class="col-md-12">
-    					<form action="">
-    				
-                            <div class="form-group">
-                                <label for="challengeName">Name</label>
-                                <input type="challengeName" class="form-control" id="challengeName" placeholder="Challenge Name">
-                            </div>
+                        <div class="col-md-6">
+                            <form action="">
+                    
+                                <div class="form-group">
+                                    <label for="challengeName">Name</label>
+                                    <input type="challengeName" class="form-control" id="challengeName" placeholder="Challenge Name">
+                                </div>
 
-                            <div class="form-group">
-                                <label for="challengeDescription">Description</label>
-                                <textarea class="form-control" maxlength="200" rows="4" id="challengeDescription">Describe your challenge in less than 500 words.</textarea>
+                                <div class="form-group">
+                                    <label for="challengeDescription">Description</label>
+                                    <textarea class="form-control" maxlength="200" rows="4" id="challengeDescription">Describe your challenge in less than 500 words.</textarea>
 
-                            </div>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="">Duration</label>
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
+                                <div class="form-group">
+                                    <label for="">Duration</label>
+                                    <select class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                     </select>
+                                </div>
 
-    						<br>
-    						<br>
+                                <div class="form-group">
+                                    <label for="searchBooks">Search books and add them</label>
+                                    <input type="text" name="searchBooks" id="searchBooks" placeholder="search books here" autocomplete="on" class="form-control">
+                                    </div>
 
-    						<button type="submit" class="btn btn-info btn-block" id="createChallenge">Create Challenge!</button>
+                                <br>
+                                <br>
 
-    					</form>
+                                <button type="submit" class="btn btn-info btn-block" id="createChallenge">Create Challenge!</button>
+
+                            </form>
+                        </div>
+    					
+                        <div class="col-md-6" id="bookRow">
+                            <script type="text/javascript">
+                            console.log('Banana');
+                            </script>
+                        </div>
 
     				</div>
 
@@ -74,6 +87,8 @@
 			</div>
 
 		</div>
+
+      
 				
 	</div>
 
