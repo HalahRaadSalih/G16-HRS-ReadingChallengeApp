@@ -144,6 +144,6 @@ function createChallenge(){
 
    //add books to this challenge
    LIST_OF_BOOKS.forEach(function(book){
-    challenge.books.push(book);
+    challenge.addBook(book);
    });
 }
