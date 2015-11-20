@@ -1,4 +1,5 @@
 
+var LIST_OF_BOOKS = [];
 
 window.onload = function(){
     googleBooksSearch();
@@ -118,6 +119,8 @@ function makeBookLayout (book) {
     "linear",
     function(){
       bookContainer.remove();
+      LIST_OF_BOOKS.push(book);
+      console.log(LIST_OF_BOOKS);
     });
 
   });
