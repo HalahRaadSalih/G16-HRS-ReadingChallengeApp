@@ -1,12 +1,13 @@
 
 window.onload = function(){
     googleBooksSearch();
+
 }
 
 function googleBooksSearch(){
 
   // define variables
-  var userInput, searchUrl, results;
+  var userInput, searchUrl, books;
 
   // save the books row in a variable
   var outputArea = $("#challengeBookRow");
@@ -18,11 +19,12 @@ function googleBooksSearch(){
 
   //on change of text input, prevent default behvior
   userInput.on('change', function(event){
+     books = [];
 
     event.preventDefault();
     // if the text field is empty, clear the screen
     if( !$(this).val() ) {
-      $('col-md-3').remove();
+      $('col-md-4').remove();
     }
 
     //else, query for the user input
@@ -37,39 +39,39 @@ function googleBooksSearch(){
 
       googleBooksAPIRequest.done(function(data){
         //initialize results
-        results = [];
 
         // remove previous item on screen
-        $('col-md-3').remove();
+        $('col-md-4').remove();
 
-        //for each item, create new book object and push it to results
+        //for each item, create new book object and push it to books
         data.items.forEach(function(item){
 
           var volumeInfo = item.volumeInfo;
           var book = makeBook(volumeInfo);
 
+          books.push(book);
+          console.log($('.btn-info'));
           outputArea.append(makeBookLayout(book));
 
         });
-
         // Add event listender to every add button
         // and prevent default behavior
-        $('.btn-info').on('click', function(event){
-          event.preventDefault();
-          console.log('clicky');
-        });
+        
 
       });
 
       googleBooksAPIRequest.fail(function(error){
         // remove existing divs 
-        $('col-md-3').remove();
+        $('col-md-4').remove();
 
         console.log(error);
         outputArea.append("<li>" + error.responseText +"</li>");
       });
 
     }
+
+    console.log('3t3774t' + $('.btn-info')[0]);
+
   });
 
   // prevent default behaior for the create challenge button
@@ -107,6 +109,11 @@ function makeBookLayout (book) {
   // create new anchor element and add button class to it
   var bookAddButton = $("<a>").addClass("btn btn-info");
   bookAddButton.html("Add book");
+
+  bookAddButton.on('click', function(event){
+          event.preventDefault();
+          console.log('clicky');
+  });
 
   // append those elements to the book container
   bookContainer.append(bookImage, bookTitle, bookDescription, bookAddButton);
