@@ -3,6 +3,9 @@
 	margin: 0 auto !important;
 	float: none !important;
 }
+.container-challenge{
+	width: 50%;
+}
 
 .row.sigup{
 	margin-top:10%;
