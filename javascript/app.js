@@ -5,16 +5,20 @@ window.onload = function(){
 
 function googleBooksSearch(){
 
+  // define variables
   var userInput, searchUrl, results;
+
+  // save the books row in a variable
   var outputArea = $("#challengeBookRow");
+
   var googleBooksAPIRequest;
 
+  // set the user input to searchBooks item
   userInput = $('#searchBooks');
 
-  userInput.data('oldVal', userInput.val());
-
+  //on change of text input, prevent default behvior
   userInput.on('change', function(event){
-    //on change of text input, prevent default behvior
+
     event.preventDefault();
     // if the text field is empty, clear the screen
     if( !$(this).val() ) {
@@ -32,7 +36,9 @@ function googleBooksSearch(){
       });
 
       googleBooksAPIRequest.done(function(data){
+        //initialize results
         results = [];
+
         // remove previous item on screen
         $('col-md-3').remove();
 
@@ -44,8 +50,16 @@ function googleBooksSearch(){
 
           outputArea.append(makeBookLayout(book));
 
-          });
         });
+
+        // Add event listender to every add button
+        // and prevent default behavior
+        $('.btn-info').on('click', function(event){
+          event.preventDefault();
+          console.log('clicky');
+        });
+
+      });
 
       googleBooksAPIRequest.fail(function(error){
         // remove existing divs 
@@ -61,7 +75,9 @@ function googleBooksSearch(){
   // prevent default behaior for the create challenge button
   $('#createChallenge').on('click', function(event){
     event.preventDefault();
-  })
+
+  });
+  
   
 }
 
@@ -98,3 +114,19 @@ function makeBookLayout (book) {
   return bookContainer;
 }
 
+function createChallenge(books){
+  // get challenge name from input field
+   var challengeName = $('#challengeName').val();
+
+   //get challenge description from text area field
+   var challengeDescription = $('#challengeDescription').val();
+
+   //get duration from challenge selection element
+   var challengeDuration = $('#challengeDuration');
+
+   // create new challenge object
+   var challenge = new Challenge(challengeName, challengeDescription, challengeDuration);
+
+   //add books to this challenge
+   challenge.books = books;
+}
