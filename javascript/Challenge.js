@@ -9,21 +9,40 @@ var Challenge = function(name, description, duration){
 	this.name = name;
 	this.description = description;
 	this.duration = duration;
+
+	//bookcounter is initially empty
+	this.bookCounter = 0;
+
+	//books are initially empty
+	this.books = [];
+
+	//challenge initial status is unfinished;
+	this.status = false;
 }
 
-
-Challenge.prototype.addBook = function(first_argument) {
-	// body...
+// Role : addes a new book to books
+Challenge.prototype.addBook = function(book) {
+	// check it already exists before adding it
+	if(this.books.indexOf(book) === -1){
+		this.books.push(book);
+		
+		//update bookcounter
+		this.bookCounter++;
+	}
+	
 };
 
-Challenge.prototype.removeBook = function(){
+// Role : removes a book from books
+Challenge.prototype.removeBook = function(book){
+	//remove book from books
+	this.books.splice(this.books.indexOf(book),1);
 
+	//update bookcounter
+	this.bookCounter--;
 }
 
-Challenge.prototype.status = function(first_argument) {
-	// body...
-};
-
+// Role : finish a challenge
 Challenge.prototype.finish = function(){
-
+	// change challenge to true
+	this.status = true;
 }
