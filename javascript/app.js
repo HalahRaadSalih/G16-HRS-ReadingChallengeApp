@@ -1,8 +1,18 @@
 
 var LIST_OF_BOOKS = [];
+var challengeBooks;
+var bookList;
 
 window.onload = function(){
-    googleBooksSearch();
+
+  // get challenge book row
+  challengeBooks = $("#challengeBookRow");
+
+  // get book list row
+  bookList = $('#bookList');
+
+  //search for books
+  googleBooksSearch();
 
 }
 
@@ -76,6 +86,8 @@ function googleBooksSearch(){
     if(createChallenge()){
       // display success
       // head back to the main page
+      // window.location.replace("timeline.html");
+
     }
   });
   
@@ -169,6 +181,7 @@ function makeListOfBooksLayout(book){
       bookContainer.remove();
       //remove book from list
       LIST_OF_BOOKS.splice(LIST_OF_BOOKS.indexOf(book),1);
+      challengeBooks.append(makeBookLayout(book));
 
     });
   });
