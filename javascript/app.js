@@ -70,9 +70,13 @@ function googleBooksSearch(){
   });
 
   // prevent default behaior for the create challenge button
+  // create challenge
   $('#createChallenge').on('click', function(event){
     event.preventDefault();
-
+    if(createChallenge()){
+      // display success
+      // head back to the main page
+    }
   });
   
   
@@ -119,6 +123,9 @@ function makeBookLayout (book) {
     function(){
       bookContainer.remove();
       LIST_OF_BOOKS.push(book);
+
+      // display newly added book underneath the form
+      $('#bookList').append(makeListOfBooksLayout(book));
     });
 
   });
@@ -127,6 +134,48 @@ function makeBookLayout (book) {
   bookContainer.append(bookImage, bookTitle, bookDescription, bookAddButton);
 
   return bookContainer;
+}
+
+function makeListOfBooksLayout(book){
+  var bookContainer = $("<div>").addClass("col-md-4");
+ 
+  //create new image and add the book image as src
+  var bookImage = $("<img>").attr("src",book.image);
+
+  //craete new h4 elemet for book title and set it to book title
+  var bookTitle = $('<h4>').html(book.title);
+
+  // create new p element for book description
+  var bookDescription = $("<p>");
+  bookDescription.html(book.description.substr(0,200));
+ 
+  // create new anchor element and add button class to it
+  var bookRemoveButton = $("<a>").addClass("btn btn-info");
+  bookRemoveButton.html("Remove book");
+
+  //on clicking add book, animate removing the boo with an animation
+  // add the book to the book list
+  bookRemoveButton.on('click', function(event){
+    event.preventDefault();
+    bookContainer.animate({
+      opacity: 0.25,
+      right: "+=50",
+      height:"toggle"
+    },
+    400,
+    "linear",
+    function(){
+      // remove book element
+      bookContainer.remove();
+      //remove book from list
+      LIST_OF_BOOKS.splice(LIST_OF_BOOKS.indexOf(book),1);
+
+    });
+  });
+
+  bookContainer.append(bookImage, bookTitle, bookDescription, bookRemoveButton);
+
+  return bookContainer
 }
 
 function createChallenge(){
@@ -146,4 +195,6 @@ function createChallenge(){
    LIST_OF_BOOKS.forEach(function(book){
     challenge.addBook(book);
    });
+
+   return challenge;
 }
