@@ -6,7 +6,7 @@ window.onload = function(){
 function googleBooksSearch(){
 
   var userInput, searchUrl, results;
-  var outputArea = $("#bookRow");
+  var outputArea = $("#challengeBookRow");
   var googleBooksAPIRequest;
 
   userInput = $('#searchBooks');
@@ -76,7 +76,7 @@ function makeBook(info){
 // this funtion creates the layout for every book
 // untested yet
 function makeBookLayout (book) {
-  var bookContainer = $("<div>").addClass("col-md-3");
+  var bookContainer = $("<div>").addClass("col-md-4");
  
   var bookImage = $("<img>").attr("src",book.image);
   var bookTitle = $('<h4>').html(book.title);
