@@ -45,13 +45,12 @@ function googleBooksSearch(){
           outputArea.append(makeBookLayout(book));
 
           });
-
-
-
         });
 
       googleBooksAPIRequest.fail(function(error){
+        // remove existing divs 
         $('col-md-3').remove();
+
         console.log(error);
         outputArea.append("<li>" + error.responseText +"</li>");
       });
@@ -59,7 +58,7 @@ function googleBooksSearch(){
     }
   });
 
-
+  // prevent default behaior for the create challenge button
   $('#createChallenge').on('click', function(event){
     event.preventDefault();
   })
@@ -76,17 +75,24 @@ function makeBook(info){
 // this funtion creates the layout for every book
 // untested yet
 function makeBookLayout (book) {
+  //create  a new div of class col-md-4
   var bookContainer = $("<div>").addClass("col-md-4");
  
+  //create new image and add the book image as src
   var bookImage = $("<img>").attr("src",book.image);
+
+  //craete new h4 elemet for book title and set it to book title
   var bookTitle = $('<h4>').html(book.title);
 
+  // create new p element for book description
   var bookDescription = $("<p>");
   bookDescription.html(book.description.substr(0,200));
  
+  // create new anchor element and add button class to it
   var bookAddButton = $("<a>").addClass("btn btn-info");
   bookAddButton.html("Add book");
 
+  // append those elements to the book container
   bookContainer.append(bookImage, bookTitle, bookDescription, bookAddButton);
 
   return bookContainer;
