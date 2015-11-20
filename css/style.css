@@ -56,6 +56,18 @@
 	height: 210px;
 }
 
-#challengeBookRow p{
-	height: 250px;
+#challengeBookRow h4{
+	height: 60px;
+	max-height: 60px;
+	overflow: hidden;
 }
+
+#challengeBookRow p{
+	max-height: 100px;
+    overflow: hidden;
+}
+
+.col-md-4{
+	margin-bottom: 20px;
+}
+
