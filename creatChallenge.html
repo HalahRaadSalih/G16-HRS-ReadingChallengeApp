@@ -31,66 +31,50 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="container-challenge">
-
-				<div class="row sigup">
-
-    				<div class="col-md-12">
-                        <div class="col-md-6">
-                            <form action="">
-                    
-                                <div class="form-group">
-                                    <label for="challengeName">Name</label>
-                                    <input type="challengeName" class="form-control" id="challengeName" placeholder="Challenge Name">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="challengeDescription">Description</label>
-                                    <textarea class="form-control" maxlength="200" rows="4" id="challengeDescription">Describe your challenge in less than 500 words.</textarea>
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">Duration</label>
-                                    <select class="form-control">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                     </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="searchBooks">Search books and add them</label>
-                                    <input type="text" name="searchBooks" id="searchBooks" placeholder="search books here" autocomplete="on" class="form-control">
-                                    </div>
-
-                                <br>
-                                <br>
-
-                                <button type="submit" class="btn btn-info btn-block" id="createChallenge">Create Challenge!</button>
-
-                            </form>
-                        </div>
-    					
-                        <div class="col-md-6" id="bookRow">
-                            <script type="text/javascript">
-                            console.log('Banana');
-                            </script>
+    		<div class="col-md-12">
+                <div class="col-md-6">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="challengeName">Name</label>
+                            <input type="challengeName" class="form-control" id="challengeName" placeholder="Challenge Name">
                         </div>
 
-    				</div>
+                        <div class="form-group">
+                            <label for="challengeDescription">Description</label>
+                            <textarea class="form-control" maxlength="200" rows="4" id="challengeDescription">Describe your challenge in less than 500 words.</textarea>
+                        </div>
 
-				</div>
+                        <div class="form-group">
+                            <label for="">Duration</label>
+                            <select class="form-control">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                 </select>
+                            </div>
 
-			</div>
+                            <div class="form-group">
+                                <label for="searchBooks">Search books and add them</label>
+                                <input type="text" name="searchBooks" id="searchBooks" placeholder="search books here" autocomplete="on" class="form-control">
+                            </div>
 
-		</div>
+                            <br>
+                            <br>
 
-      
-				
-	</div>
+                            <button type="submit" class="btn btn-info btn-block" id="createChallenge">Create Challenge!</button>
+
+                        </form>
+                    </div>
+    				<br>	
+                    <div class="col-md-6" id="challengeBooks">
+                        <div class="col-md-12" id="challengeBookRow">
+                        </div>
+                    </div>
+    			</div>
+            </div>	
+        </div>
 
 	<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
 	<script type="text/javascript" src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
