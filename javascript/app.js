@@ -1,4 +1,5 @@
 
+
 window.onload = function(){
     googleBooksSearch();
 
@@ -50,14 +51,10 @@ function googleBooksSearch(){
           var book = makeBook(volumeInfo);
 
           books.push(book);
-          console.log($('.btn-info'));
           outputArea.append(makeBookLayout(book));
 
         });
-        // Add event listender to every add button
-        // and prevent default behavior
-        
-
+       
       });
 
       googleBooksAPIRequest.fail(function(error){
@@ -111,8 +108,18 @@ function makeBookLayout (book) {
   bookAddButton.html("Add book");
 
   bookAddButton.on('click', function(event){
-          event.preventDefault();
-          console.log('clicky');
+    event.preventDefault();
+    bookContainer.animate({
+      opacity: 0.25,
+      right: "+=50",
+      height:"toggle"
+    },
+    400,
+    "linear",
+    function(){
+      bookContainer.remove();
+    });
+
   });
 
   // append those elements to the book container
@@ -121,7 +128,7 @@ function makeBookLayout (book) {
   return bookContainer;
 }
 
-function createChallenge(books){
+function createChallenge(){
   // get challenge name from input field
    var challengeName = $('#challengeName').val();
 
