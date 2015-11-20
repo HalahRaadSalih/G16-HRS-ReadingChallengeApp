@@ -16,7 +16,6 @@ function googleBooksSearch(){
   userInput.on('change', function(event){
     //on change of text input, prevent default behvior
     event.preventDefault();
-
     // if the text field is empty, clear the screen
     if( !$(this).val() ) {
       $('col-md-3').remove();
@@ -59,6 +58,11 @@ function googleBooksSearch(){
 
     }
   });
+
+
+  $('#createChallenge').on('click', function(event){
+    event.preventDefault();
+  })
   
 }
 
