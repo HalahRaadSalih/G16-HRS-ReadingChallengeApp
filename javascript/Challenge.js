@@ -25,7 +25,7 @@ Challenge.prototype.addBook = function(book) {
 	// check it already exists before adding it
 	if(this.books.indexOf(book) === -1){
 		this.books.push(book);
-		
+
 		//update bookcounter
 		this.bookCounter++;
 	}
@@ -43,6 +43,9 @@ Challenge.prototype.removeBook = function(book){
 
 // Role : finish a challenge
 Challenge.prototype.finish = function(){
+	// check if all books statuses are true
+	/* Update code here */
+	
 	// change challenge to true
 	this.status = true;
 }
