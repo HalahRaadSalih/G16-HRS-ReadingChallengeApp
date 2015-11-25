@@ -29,32 +29,30 @@ function googleBooksSearch(){
   // set the user input to searchBooks item
   userInput = $('#searchBooks');
 
-  //on change of text input, prevent default behvior
-  userInput.on('change', function(event){
+  
+  userInput.keypress(function(event){
 
-    event.preventDefault();
-    // if the text field is empty, clear the screen
-    if( !$(this).val() ) {
-      $('col-md-4').remove();
-    }
+    // remove prev. items on screen
+    $('.col-md-4').remove();
 
-    //else, query for the user input
-    else{
+    // on enter press, seach for book of that user inpu title
+    // enter key  === 13
+    if(event.which === 13){
+       //else, query for the user input
       searchUrl = "https://www.googleapis.com/books/v1/volumes?q=intitle:" + userInput.val();
 
       googleBooksAPIRequest = $.ajax({
         type:'GET',
         dataType:'json',
         url:searchUrl,
-      });
+        });
 
       googleBooksAPIRequest.done(function(data){
-        //initialize results
 
-        // remove previous item on screen
-        $('col-md-4').remove();
+        // remove previous items on screen
+        $('.col-md-4').remove();
 
-        //for each item, create new book object and push it to books
+          //for each item, create new book object and push it to books
         data.items.forEach(function(item){
 
           var volumeInfo = item.volumeInfo;
@@ -67,15 +65,13 @@ function googleBooksSearch(){
       });
 
       googleBooksAPIRequest.fail(function(error){
-        // remove existing divs 
-        $('col-md-4').remove();
+          // remove existing divs 
+        $('.col-md-4').remove();
 
         console.log(error);
         outputArea.append("<li>" + error.responseText +"</li>");
       });
-
     }
-
 
   });
 
@@ -98,7 +94,7 @@ function googleBooksSearch(){
 // sent
 function makeBook(info){
 
-   return new Book(info.title, info.imageLinks.thumbnail,info.description);
+   return new Book(info.title, "http://placehold.it/260/200","Letterpress deep v waistcoat, +1 pour-over squid banh mi pinterest kinfolk YOLO. Ethical leggings letterpress photo booth bushwick 8-bit. Master cleanse brooklyn four loko tumblr actually you probably haven't heard of them, sriracha flexitarian cronut before they sold out tattooed 90's quinoa salvia");
 }
 
 // this funtion creates the layout for every book
@@ -111,11 +107,11 @@ function makeBookLayout (book) {
   var bookImage = $("<img>").attr("src",book.image);
 
   //craete new h4 elemet for book title and set it to book title
-  var bookTitle = $('<h4>').html(book.title);
+  var bookTitle = $('<h4>').html(book.bookTitle);
 
   // create new p element for book description
   var bookDescription = $("<p>");
-  bookDescription.html(book.description.substr(0,200));
+  bookDescription.html(book.bookDescription.substr(0,200));
  
   // create new anchor element and add button class to it
   var bookAddButton = $("<a>").addClass("btn btn-info");
@@ -155,11 +151,12 @@ function makeListOfBooksLayout(book){
   var bookImage = $("<img>").attr("src",book.image);
 
   //craete new h4 elemet for book title and set it to book title
-  var bookTitle = $('<h4>').html(book.title);
+  var bookTitle = $('<h4>').html(book.bookTitle);
 
   // create new p element for book description
   var bookDescription = $("<p>");
-  bookDescription.html(book.description.substr(0,200));
+  console.log('hahahahahah' + book.bookDescription);
+  bookDescription.html(book.bookDescription.substr(0,200));
  
   // create new anchor element and add button class to it
   var bookRemoveButton = $("<a>").addClass("btn btn-info");
