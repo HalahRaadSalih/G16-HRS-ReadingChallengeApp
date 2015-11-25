@@ -5,11 +5,15 @@ var User = function(firstName, lastName, email){
 	this.challenges = [];
 	this.finishedChallenges = [];
 	this.unfinishedCallenges = [];
+	this.userID = "";
 }
 
 
-User.prototype.addChallenge = function(first_argument) {
-	
+User.prototype.addChallenge = function(challenge) {
+	if(this.userID){
+		var ref = new Firebase("https://amber-inferno-898.firebaseio.com/users/"+this.userID+"/challenges");
+		ref.set(challenge);
+	}
 };
 
 User.prototype.removeChallenge = function(first_argument) {
