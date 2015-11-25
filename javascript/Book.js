@@ -1,6 +1,6 @@
 var Book = function(title,image,description){
-	this.title = title;
+	this.bookTitle = title;
 	this.image = image;
-	this.description = description;
+	this.bookDescription = description;
 }
 
