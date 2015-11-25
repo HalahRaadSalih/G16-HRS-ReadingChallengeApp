@@ -41,6 +41,11 @@ Challenge.prototype.removeBook = function(book){
 	this.bookCounter--;
 }
 
+// Role : finish a book 
+challenge.prototype.finishBook = function(book) {
+	book.read = true;
+};
+
 // Role : finish a challenge
 Challenge.prototype.finish = function(){
 	// check if all books statuses are true
