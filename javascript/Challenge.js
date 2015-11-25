@@ -42,15 +42,21 @@ Challenge.prototype.removeBook = function(book){
 }
 
 // Role : finish a book 
-challenge.prototype.finishBook = function(book) {
+Challenge.prototype.finishBook = function(book) {
 	book.read = true;
 };
 
 // Role : finish a challenge
 Challenge.prototype.finish = function(){
 	// check if all books statuses are true
-	/* Update code here */
+	function isRead(book, index, array) {
+  	
+  		return book.read === true;
+	}
+
+	if(this.books.every(isRead)){
+		// change status to true
+		this.status = true;
+	}
 	
-	// change challenge to true
-	this.status = true;
 }
