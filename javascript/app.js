@@ -56,6 +56,7 @@ function googleBooksSearch(){
         data.items.forEach(function(item){
 
           var volumeInfo = item.volumeInfo;
+
           var book = makeBook(volumeInfo);
 
           outputArea.append(makeBookLayout(book));
@@ -93,8 +94,11 @@ function googleBooksSearch(){
 // this function responsibilty is to create new book object from the info parameter
 // sent
 function makeBook(info){
-
-   return new Book(info.title, "http://placehold.it/260/200","Letterpress deep v waistcoat, +1 pour-over squid banh mi pinterest kinfolk YOLO. Ethical leggings letterpress photo booth bushwick 8-bit. Master cleanse brooklyn four loko tumblr actually you probably haven't heard of them, sriracha flexitarian cronut before they sold out tattooed 90's quinoa salvia");
+   var fakeDescription = "Letterpress deep v waistcoat, +1 pour-over squid banh mi pinterest kinfolk YOLO. Ethical leggings letterpress photo booth bushwick 8-bit. Master cleanse brooklyn four loko tumblr actually you probably haven't heard of them, sriracha flexitarian cronut before they sold out tattooed 90's quinoa salvia";
+   var tempImage = "http://placehold.it/260/200";
+   return new Book(info.title,
+                  !info.imageLinks.thumbnail? tempImage : info.imageLinks.thumbnail , 
+                  !info.description? fakeDescription : info.description);
 }
 
 // this funtion creates the layout for every book
