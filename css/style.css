@@ -73,3 +73,13 @@
 	margin-bottom: 20px;
 }
 
+#newChallenge{
+	 border-radius: 10px;
+	 border: 1px solid black;
+}
+
+#newChallenge img{
+	margin: 0 auto;
+	width: 90%;
+	height: 200px;
+}
