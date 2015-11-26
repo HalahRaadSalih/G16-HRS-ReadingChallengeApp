@@ -20,12 +20,17 @@ var ref = new Firebase("https://amber-inferno-898.firebaseio.com/users");
   			} 
 
   			else {
-          var userID = userData.uid;
           var someObj = {};
-          someObj[userID] = {
-                              firstName: $("#firstName").val(),
-                              lastName: $("#lastName").val()
-                            };
+
+          var userID = userData.uid;
+          var firstName = $("#firstName").val();
+          var lastName = $("#lastName").val();
+          var email = $("#userEmail").val();
+
+          var user = new User(firstName, lastName, email);
+          user.userID = userID;
+
+          someObj[userID] = user;
 
           ref.set(someObj);
           
