@@ -1,4 +1,5 @@
 
+var FIREBASE_REF = new Firebase("https://amber-inferno-898.firebaseio.com");
 
 var User = function(firstName, lastName, email){
 	this.firstName = firstName;
@@ -20,8 +21,8 @@ User.prototype.addChallenge = function(challenge) {
 	// check if user has an ID
 	if(this.userID){
 		//if the user does indeed have an ID, then use the id to add challeneg
-		var ref = new Firebase("https://amber-inferno-898.firebaseio.com/users/"+this.userID+"/challenges");
-
+		// var ref = new Firebase("https://amber-inferno-898.firebaseio.com/users/"+this.userID+"/challenges");
+		var ref = FIREBASE_REF.child('users').child(this.userID);
 		//add challenge to firebase
 		ref.set(challenge);
 

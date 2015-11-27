@@ -34,10 +34,6 @@ var ref = new Firebase("https://amber-inferno-898.firebaseio.com/users");
 
           ref.set(someObj);
           
-
-          var successAlert = $('<div class="alert alert-success" role="alert">Successfully created user!</div>');
-          $('form').empty();
-          window.location.replace("index.html");
   			}
 			});	
 		}
