@@ -37,3 +37,40 @@ var ref = new Firebase("https://amber-inferno-898.firebaseio.com/users");
   			}
 			});	
 		}
+
+    $("#loginUser").on('click', function(){
+      return false;
+    });
+
+    $("#loginUser").on('click', loginUser);
+
+
+    function loginUser(){
+      function authHandler(error, authData) {
+           if (error) {
+            switch (error.code) {
+              case "INVALID_EMAIL":
+                $("#userEmail").toggleClass("hasError");
+                break;
+              case "INVALID_PASSWORD":
+                console.log("The specified user account password is incorrect.");
+                break;
+              case "INVALID_USER":
+                console.log("The specified user account does not exist.");
+                break;
+              default:
+                console.log("Error logging user in:", error);
+            }
+          }
+           else {
+            console.log("Authenticated successfully with payload:", authData);
+            window.location.replace("index.html");
+
+            }
+          }
+
+          ref.authWithPassword({
+            email    : $("#userEmail").val(),
+            password : $("#userPassword").val()
+            }, authHandler);
+    }
