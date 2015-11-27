@@ -1,16 +1,33 @@
 var ref = new Firebase("https://amber-inferno-898.firebaseio.com/users");
-    $("#createAccount").on('click', function(){
+
+window.onload = function(){
+
+  $("#createAccount").on('click', function(){
+      return false;
+  });
+
+  $("#createAccount").on('click', createUser);
+
+  $("#loginUser").on('click', function(){
       return false;
     });
 
-    $("#createAccount").on('click', createUser);
-  	
+  $("#loginUser").on('click', loginUser);
+    
+} 
+    
 
-		function createUser(){
+	function createUser(){
+
+    var firstName = $("#firstName").val();
+    var lastName = $("#lastName").val();
+    var email = $("#userEmail").val();
+
+    var user = new User(firstName, lastName, email);
 
 			ref.createUser({
 
-  			email    : $("#userEmail").val(),
+  			email    : email,
   			password : $("#userPassword").val(),
         
 			   }, function(error, userData) {
@@ -21,28 +38,21 @@ var ref = new Firebase("https://amber-inferno-898.firebaseio.com/users");
 
   			else {
           var someObj = {};
-
           var userID = userData.uid;
-          var firstName = $("#firstName").val();
-          var lastName = $("#lastName").val();
-          var email = $("#userEmail").val();
-
-          var user = new User(firstName, lastName, email);
+          
           user.userID = userID;
-
           someObj[userID] = user;
 
           ref.set(someObj);
+
+          loginUser();
           
   			}
-			});	
+			});
+
 		}
 
-    $("#loginUser").on('click', function(){
-      return false;
-    });
-
-    $("#loginUser").on('click', loginUser);
+    
 
 
     function loginUser(){
@@ -71,6 +81,8 @@ var ref = new Firebase("https://amber-inferno-898.firebaseio.com/users");
 
           ref.authWithPassword({
             email    : $("#userEmail").val(),
-            password : $("#userPassword").val()
+            password : $("#userPassword").val(),
+            rememberMe: $("#rememberMe").val()
+
             }, authHandler);
     }
