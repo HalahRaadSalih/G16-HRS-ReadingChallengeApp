@@ -20,8 +20,9 @@ This application will be about creating your own reading challenges such as fini
 - Add books.
 - Remove books.
 - Create a challenge.
-- Remove a challenge.
 - Edit a challenge.
-- View a challenge and list of challenges.
-- Create an account with email & password or sign up using FB.
-- Sign in with email & password, or sign in usign FB.
+- Create an account with email & password. 
+- Sign in with email & password.
+
+
+ 

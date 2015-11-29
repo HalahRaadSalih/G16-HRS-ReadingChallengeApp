@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Create a Challenge</title>
+
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+	<body>
+		<div class="navbar navbar-default">
+			<div class="container">
+    			<div class="navbar-header">
+    				<a class="navbar-brand" href="#">Logo</a>
+    			</div>
+
+    			<div class="container">
+    				<p class="navbar-text navbar-right">Home</p>
+    				<p class="navbar-text navbar-right">About</p>
+    				<p class="navbar-text navbar-right">Contact</p>
+    			</div>
+
+			</div>
+		</div>
+
+
+	<div class="container">
+		<div class="row">
+    		<div class="col-md-12">
+                <div class="col-md-6">
+                    <form action="">
+                        <div class="form-group">
+                            <label for="challengeName">Name</label>
+                            <input type="challengeName" class="form-control" id="challengeName" placeholder="Challenge Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="challengeDescription">Description</label>
+                            <textarea class="form-control" maxlength="200" rows="4" id="challengeDescription">Describe your challenge in less than 500 words.</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Duration</label>
+                            <select class="form-control">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                 </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="searchBooks">Search books and add them</label>
+                                <input type="text" name="searchBooks" id="searchBooks" placeholder="search books here" autocomplete="on" class="form-control">
+                            </div>
+
+                            <br>
+                            <br>
+
+                            <button type="submit" class="btn btn-info btn-block" id="createChallenge">Create Challenge!</button>
+
+                        </form>
+
+                        <div>
+                            <br>
+                            <br>
+                        </div>
+
+                        <div class="row" id="bookList">
+                            
+                        </div>
+                    </div>
+
+    				<br>
+
+                    <div class="col-md-6" id="challengeBooks">
+                        <div class="col-md-12" id="challengeBookRow">
+                        </div>
+                    </div>
+    			</div>
+            </div>	
+        </div>
+
+	<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+	<script type="text/javascript" src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="javascript/main.js"></script>
+    <script type="text/javascript" src="javascript/Book.js"></script>
+    <script type="text/javascript" src="javascript/Challenge.js"></script>
+    <script type="text/javascript" src="javascript/app.js"></script>
+
+	</body>
+</html>
