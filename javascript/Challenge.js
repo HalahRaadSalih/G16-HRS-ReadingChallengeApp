@@ -5,7 +5,7 @@
 	duration : how long it takes to finish the challenge,
 	books : the list of books 
 */
-var Challenge = function(name, description, duration){
+var Challenge = function(name, description, duration, author){
 	this.name = name;
 	this.description = description;
 	this.duration = duration;
@@ -18,6 +18,9 @@ var Challenge = function(name, description, duration){
 
 	//challenge initial status is unfinished;
 	this.status = false;
+
+	//challenge author, aka owner -> userID
+	this.author = author;
 }
 
 // Role : addes a new book to books
