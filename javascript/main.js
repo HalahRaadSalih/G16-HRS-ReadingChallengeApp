@@ -1,4 +1,5 @@
 var ref = new Firebase("https://amber-inferno-898.firebaseio.com/users");
+var CURRENT_USER_ID;
 
 window.onload = function(){
 
@@ -37,6 +38,7 @@ window.onload = function(){
   			} 
 
   			else {
+          CURRENT_USER_ID = userData.uid;
           var someObj = {};
           var userID = userData.uid;
           
@@ -73,6 +75,8 @@ window.onload = function(){
             }
           }
            else {
+            CURRENT_USER_ID = authData.uid;
+            console.log('CURRENT_USER_ID : '+CURRENT_USER_ID);
             console.log("Authenticated successfully with payload:", authData);
             window.location.replace("index.html");
 

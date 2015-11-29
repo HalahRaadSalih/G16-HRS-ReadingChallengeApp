@@ -80,10 +80,27 @@ function googleBooksSearch(){
   // create challenge
   $('#createChallenge').on('click', function(event){
     event.preventDefault();
-    if(createChallenge()){
+    if (event.keyCode == 13)  {
+          return false;
+      }
+      
+    var challenge = {};
+    challenge = createChallenge();
+    if(challenge){
       // display success
       // head back to the main page
       // window.location.replace("timeline.html");
+      var ref = new Firebase("https://amber-inferno-898.firebaseio.com/challenges");
+      var newChallenge = ref.push();
+
+      newChallenge.set({
+        author: "0dbb3e0e-8a4f-44dc-9ea9-8cf32c6a6859",
+        name: challenge.name,
+        description: challenge.description,
+        bookCounter: challenge.bookCounter,
+        books: JSON.stringify(challenge.books),
+        status : challenge.status
+      });
 
     }
   });
@@ -159,7 +176,6 @@ function makeListOfBooksLayout(book){
 
   // create new p element for book description
   var bookDescription = $("<p>");
-  console.log('hahahahahah' + book.bookDescription);
   bookDescription.html(book.bookDescription.substr(0,200));
  
   // create new anchor element and add button class to it
@@ -193,6 +209,7 @@ function makeListOfBooksLayout(book){
 }
 
 function createChallenge(){
+  var challenge = {};
   // get challenge name from input field
    var challengeName = $('#challengeName').val();
 
@@ -203,12 +220,13 @@ function createChallenge(){
    var challengeDuration = $('#challengeDuration');
 
    // create new challenge object
-   var challenge = new Challenge(challengeName, challengeDescription, challengeDuration);
+   challenge = new Challenge(challengeName, challengeDescription, challengeDuration, CURRENT_USER_ID);
 
    //add books to this challenge
    LIST_OF_BOOKS.forEach(function(book){
     challenge.addBook(book);
    });
+
 
    return challenge;
 }
