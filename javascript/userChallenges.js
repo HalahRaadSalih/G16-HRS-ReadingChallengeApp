@@ -10,18 +10,25 @@
 		window.location.replace("index.html");
 	});
 
-	var refChallenges = new Firebase("https://amber-inferno-898.firebaseio.com");
+  var challengeOuput = $('#userChallenges');
+
+	var refChallenges = new Firebase("https://amber-inferno-898.firebaseio.com/challenges");
 
 	refChallenges.on("value", function(snapshot) {
-  	console.log(snapshot.val());
+    var data = snapshot.val();
+  	console.log(data);
+
+    for(var key in data){
+
+      console.log(key + ' : ' + data[key]);
+        challengeOuput.append(makeChallengeLayout(new Challenge(data[key]["name"], 'Disrupt four dollar toast cronut, normcore schlitz YOLO distillery everyday carry tofu post-ironic trust fund affogato cold-pressed vegan. Franzen forage banjo, single-origin coffee authentic mumblecore art party viral cornhole quinoa vinyl ramps. Occupy cray yr slow-carb')));
+
+    }
+
 	}, 
 	function (errorObject) {
   	console.log("The read failed: " + errorObject.code);
 	});
-	var challengeOuput = $('#userChallenges');
-
-	challengeOuput.append(makeChallengeLayout(new Challenge('Halah', 'Disrupt four dollar toast cronut, normcore schlitz YOLO distillery everyday carry tofu post-ironic trust fund affogato cold-pressed vegan. Franzen forage banjo, single-origin coffee authentic mumblecore art party viral cornhole quinoa vinyl ramps. Occupy cray yr slow-carb')));
-
 
 
 
