@@ -1,26 +1,29 @@
 
-	console.log('here');
-	$("#newChallenge").on('click', function(){
+	// link to create challenge page 
+  //when new challenge button is clicked
+  $("#newChallenge").on('click', function(event){
+      event.preventDefault();
     	window.location.replace("createChallenge.html");
 	});
 
-
+  // log out user when logout is clicked, link back to index
 	$("#logoutUser").on('click', function(){
 		ref.unauth();
 		window.location.replace("index.html");
 	});
 
+  //get user challenges output area
   var challengeOuput = $('#userChallenges');
 
+  //link to firebase
 	var refChallenges = new Firebase("https://amber-inferno-898.firebaseio.com/challenges");
 
 	refChallenges.on("value", function(snapshot) {
     var data = snapshot.val();
-  	console.log(data);
 
+    //for every challenge retreived, create a col-md-3
     for(var key in data){
 
-      console.log(key + ' : ' + data[key]);
         challengeOuput.append(makeChallengeLayout(new Challenge(data[key]["name"], 'Disrupt four dollar toast cronut, normcore schlitz YOLO distillery everyday carry tofu post-ironic trust fund affogato cold-pressed vegan. Franzen forage banjo, single-origin coffee authentic mumblecore art party viral cornhole quinoa vinyl ramps. Occupy cray yr slow-carb')));
 
     }
