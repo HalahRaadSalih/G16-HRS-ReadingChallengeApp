@@ -7,7 +7,7 @@
 
 	$("#logoutUser").on('click', function(){
 		ref.unauth();
-		window.location.replace("login.html");
+		window.location.replace("index.html");
 	});
 
 	var refChallenges = new Firebase("https://amber-inferno-898.firebaseio.com");
