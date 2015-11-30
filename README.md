@@ -23,6 +23,6 @@ This application will be about creating your own reading challenges such as fini
 - Edit a challenge.
 - Create an account with email & password. 
 - Sign in with email & password.
-
+- User can retreieve challenges previously created.
 
  
