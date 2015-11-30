@@ -78,7 +78,7 @@ window.onload = function(){
             CURRENT_USER_ID = authData.uid;
             console.log('CURRENT_USER_ID : '+CURRENT_USER_ID);
             console.log("Authenticated successfully with payload:", authData);
-            window.location.replace("index.html");
+            window.location.replace("userChallenges.html");
 
             }
           }
