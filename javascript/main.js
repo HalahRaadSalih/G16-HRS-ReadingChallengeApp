@@ -84,7 +84,7 @@ window.onload = function(){
             console.log("Authenticated successfully with payload:", authData);
 
             console.log(window.location.pathname);
-            if(window.location.pathname === "/Users/HalahAlShaikhly/GalvinzeProjects/G16-HRS-ReadingChallengeApp/index.html"){
+            if(window.location.pathname === "/G16-HRS-ReadingChallengeApp/"){
               window.location.replace("pages/userChallenges.html");
             }
 
