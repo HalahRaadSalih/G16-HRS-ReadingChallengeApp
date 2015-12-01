@@ -102,6 +102,7 @@ function googleBooksSearch(){
         status : challenge.status
       });
 
+      window.location.replace("userChallenges.html");
     }
   });
   
