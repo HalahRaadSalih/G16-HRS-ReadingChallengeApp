@@ -14,6 +14,11 @@ window.onload = function(){
   //search for books
   googleBooksSearch();
 
+  $("#backToUserChallenges").on('click', function(){
+    window.location.replace("userChallenges.html");
+    return false;
+  });
+
 }
 
 function googleBooksSearch(){
