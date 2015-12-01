@@ -9,7 +9,7 @@
   // log out user when logout is clicked, link back to index
 	$("#logoutUser").on('click', function(){
 		ref.unauth();
-		window.location.replace("index.html");
+		window.location.replace("../index.html");
 	});
 
   //get user challenges output area

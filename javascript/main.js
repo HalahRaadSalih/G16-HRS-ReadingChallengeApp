@@ -15,7 +15,7 @@ window.onload = function(){
 
   $("#loginUser").on('click', loginUser);
   $("#navBarLogin").on('click', function(){
-      window.location.replace("index.html");
+      window.location.replace("../index.html");
       return false;
   });
     
@@ -82,7 +82,7 @@ window.onload = function(){
             CURRENT_USER_ID = authData.uid;
             console.log('CURRENT_USER_ID : '+CURRENT_USER_ID);
             console.log("Authenticated successfully with payload:", authData);
-            window.location.replace("userChallenges.html");
+            window.location.replace("pages/userChallenges.html");
 
             }
           }
