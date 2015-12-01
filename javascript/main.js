@@ -82,7 +82,16 @@ window.onload = function(){
             CURRENT_USER_ID = authData.uid;
             console.log('CURRENT_USER_ID : '+CURRENT_USER_ID);
             console.log("Authenticated successfully with payload:", authData);
-            window.location.replace("userChallenges.html");
+
+            console.log(window.location.pathname);
+            if(window.location.pathname === "/Users/HalahAlShaikhly/GalvinzeProjects/G16-HRS-ReadingChallengeApp/index.html"){
+              window.location.replace("pages/userChallenges.html");
+            }
+
+            
+            else{
+              window.location.replace("userChallenges.html");
+            }
 
             }
           }
