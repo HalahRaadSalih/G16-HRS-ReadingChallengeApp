@@ -42,6 +42,7 @@ function googleBooksSearch(){
 
     // on enter press, seach for book of that user inpu title
     // enter key  === 13
+
     if(event.which === 13){
        //else, query for the user input
       searchUrl = "https://www.googleapis.com/books/v1/volumes?q=intitle:" + userInput.val();
@@ -78,7 +79,6 @@ function googleBooksSearch(){
         outputArea.append("<li>" + error.responseText +"</li>");
       });
     }
-
   });
 
   // prevent default behaior for the create challenge button
@@ -105,9 +105,16 @@ function googleBooksSearch(){
         bookCounter: challenge.bookCounter,
         books: JSON.stringify(challenge.books),
         status : challenge.status
+      }, function(error){
+         if(error){
+          console.log(error);
+         }
+         else{
+          window.location.replace("userChallenges.html");
+         }
       });
 
-      window.location.replace("userChallenges.html");
+      
     }
   });
   
