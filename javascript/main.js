@@ -14,6 +14,10 @@ window.onload = function(){
     });
 
   $("#loginUser").on('click', loginUser);
+  $("#navBarLogin").on('click', function(){
+      window.location.replace("index.html");
+      return false;
+  });
     
 } 
     
