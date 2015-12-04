@@ -7,7 +7,9 @@ window.onload = function(){
       return false;
   });
 
-  $("#createAccount").on('click', createUser);
+  $("#createAccount").on('click', createUser().then(function(){
+    console.log('haha');
+  }));
 
   $("#loginUser").on('click', function(){
       return false;
@@ -23,6 +25,7 @@ window.onload = function(){
     
 
 	function createUser(){
+    var deferred = $.Deferred();
 
     var firstName = $("#firstName").val();
     var lastName = $("#lastName").val();
@@ -39,9 +42,11 @@ window.onload = function(){
 
   			if (error) {
           console.log("Error creating user:", error);
+          deferred.reject(error);
   			} 
 
   			else {
+          deferred.resolve(userData);
           CURRENT_USER_ID = userData.uid;
           var someObj = {};
           var userID = userData.uid;
@@ -56,6 +61,7 @@ window.onload = function(){
   			}
 			});
 
+      return deferred.promise();
 		}
 
     
